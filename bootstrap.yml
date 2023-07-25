@@ -4,8 +4,9 @@
   connection: local
   become: true
 
-  tasks:
+  pre_tasks:
     - name: Install collections and roles together
+      become: yes
       ansible.builtin.command: ansible-galaxy install -r requirements.yml
 
   roles:
