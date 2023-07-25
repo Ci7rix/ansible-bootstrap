@@ -5,6 +5,7 @@
   connection: local
   
   tasks:
-    - name: Download all required Ansible roles
-      command: ansible-galaxy install -r requirements.yml
+    - name: Download all required Ansible collections
+      command: ansible-galaxy collection install -f -r collections/requirements.yml
       changed_when: true
+      
