@@ -6,7 +6,7 @@
 
   pre_tasks:
     - name: Install collections and roles together
-      ansible.builtin.command: ansible-galaxy install -r requirements.yml
+      local_action: ansible.builtin.command ansible-galaxy install -r requirements.yml
 
   roles:
     - { role: packages }
