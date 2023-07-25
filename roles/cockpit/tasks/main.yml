@@ -1,5 +1,6 @@
 ---
-- block:
+- name: Cockpit
+  block:
     - name: Install cockpit
       ansible.builtin.dnf:
         name: "{{ item.name }}"

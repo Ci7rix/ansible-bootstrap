@@ -1,7 +1,3 @@
-firewalld_rules: [
-  { service: cockpit, permanent: true, state: enabled }
-]
-
-dnf_packages: [
-  { name: cockpit, state: present }
-]
+---
+firewalld_rules: [{ service: cockpit, permanent: true, state: enabled }]
+dnf_packages: [{ name: cockpit, state: present }]

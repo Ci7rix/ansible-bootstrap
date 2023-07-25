@@ -1,5 +1,6 @@
 ---
-- block:
+- name: Firewall
+  block:
     - name: Install firewalld
       ansible.builtin.dnf:
         name: firewalld

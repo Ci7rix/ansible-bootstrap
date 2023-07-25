@@ -1,3 +1,2 @@
-firewalld_rules: [
-  { service: ssh, permanent: true, state: enabled }
-]
+---
+firewalld_rules: [{ service: ssh, permanent: true, state: enabled }]

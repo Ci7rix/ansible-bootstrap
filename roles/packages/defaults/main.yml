@@ -1,4 +1,2 @@
-dnf_packages: [
-  { name: tmux, state: present },
-  { name: vim, state: present },
-]
+---
+dnf_packages: [{ name: tmux, state: present }, { name: vim, state: present }]
