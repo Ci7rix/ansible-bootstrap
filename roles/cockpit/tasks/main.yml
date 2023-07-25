@@ -1,0 +1,22 @@
+---
+- block:
+    - name: Install cockpit
+      ansible.builtin.dnf:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+        update_cache: true
+      loop: "{{ dnf_packages }}"
+
+    - name: Set traffic rules
+      ansible.posix.firewalld:
+        service: "{{ item.service }}"
+        permanent: "{{ item.permanent }}"
+        state: "{{ item.state }}"
+      loop: "{{ firewalld_rules }}"
+      notify: Reload firewalld
+
+    - name: Enable/start cockpit
+      ansible.builtin.systemd:
+        name: cockpit.socket
+        state: started
+        enabled: true

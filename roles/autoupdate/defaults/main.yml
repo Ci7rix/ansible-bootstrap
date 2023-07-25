@@ -1,0 +1,5 @@
+automatic_conf:
+  [
+    { section: commands, option: upgrade_type, value: security },
+    { section: commands, option: reboot, value: when-needed },
+  ]

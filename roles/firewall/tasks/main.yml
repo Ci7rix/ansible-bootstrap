@@ -1,0 +1,22 @@
+---
+- block:
+    - name: Install firewalld
+      ansible.builtin.dnf:
+        name: firewalld
+        state: present
+        update_cache: true
+
+    - name: Enable/start firewalld
+      ansible.builtin.systemd:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Set traffic rules
+      ansible.posix.firewalld:
+        service: "{{ item.service }}"
+        permanent: "{{ item.permanent }}"
+        state: "{{ item.state }}"
+      loop: "{{ firewalld_rules }}"
+      notify:
+        - Restart firewalld

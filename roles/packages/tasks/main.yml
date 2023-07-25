@@ -1,0 +1,21 @@
+---
+- block:
+    - name: Update all packages
+      ansible.builtin.dnf:
+        name: "*" # noqa package-latest
+        state: latest
+
+    - name: Install additional packages
+      ansible.builtin.dnf:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop: "{{ dnf_packages }}"
+
+    - name: Check if reboot is needed
+      ansible.builtin.command: needs-restarting -r
+      register: reg_reboot_required
+      ignore_errors: true
+      failed_when: false
+      changed_when: reg_reboot_required.rc != 0
+      notify:
+        - Reboot system
