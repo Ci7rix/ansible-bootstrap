@@ -1,12 +1,8 @@
 ---
 - name: Bootstrap
-  hosts: 127.0.0.1
+  hosts: localhost
   connection: local
   become: true
-
-  pre_tasks:
-    - name: Install collections and roles together
-      local_action: ansible.builtin.command ansible-galaxy install -r requirements.yml
 
   roles:
     - { role: packages }
