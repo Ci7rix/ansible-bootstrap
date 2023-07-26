@@ -4,3 +4,4 @@
     msg: Reboot initiated by Ansible after update
     reboot_timeout: 3600
     test_command: w
+  ignore_errors: true
